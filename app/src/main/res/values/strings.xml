@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sign Provider Example App</string>
+    <string name="activity_title">Test the Sign Provider Library here:</string>
+    <string name="id_hint">Type Gardiner or phonetic code</string>
+</resources>
