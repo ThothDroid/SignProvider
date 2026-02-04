@@ -1,3 +1,6 @@
+[![](https://jitpack.io/v/cristmasbox/SignProvider.svg)](https://jitpack.io/#cristmasbox/SignProvider)
+
+
 # SignProvider
 A library that provides ancient Egyptian hieroglyphs for use with a hieroglyph renderer such as [Egyptian Writer](https://github.com/cristmasbox/Egyptian_Writer).
 
