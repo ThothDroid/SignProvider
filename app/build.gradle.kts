@@ -37,6 +37,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":signprovider"))
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

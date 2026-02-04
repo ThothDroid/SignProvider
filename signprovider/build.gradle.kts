@@ -31,6 +31,11 @@ android {
 }
 
 dependencies {
+
+    // added libraries
+    implementation(libs.opencsv)
+
+    // default libraries
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
