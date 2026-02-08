@@ -39,23 +39,21 @@ public class SignProvider {
     }
 
 
-    public ArrayList<Map<String, ArrayList<String>>> getAllSigns() throws IOException, CsvValidationException {
-        ArrayList<Map<String, ArrayList<String>>> returnArray = new ArrayList<>();
+    public ArrayList<String> getAllSigns() throws IOException {
+        ArrayList<String> returnArray = new ArrayList<>();
 
-        CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().open(FILENAME_DRAWABLE_PATHS)));
-        String[] line;
-        while ((line = reader.readNext()) != null){
-            for (String field : line) {
-                String[] row = field.split(";");
-                String id = row[0];
-
-                // get phonetic alternatives
-                ArrayList<String> phoneticIds = getPhoneticsFromGardiner(id);
-
-                Map<String, ArrayList<String>> map = new HashMap<>();
-                map.put(id, phoneticIds);
-                returnArray.add(map);
+        try {
+            CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().open(FILENAME_DRAWABLE_PATHS)));
+            String[] line;
+            while ((line = reader.readNext()) != null) {
+                for (String field : line) {
+                    String[] row = field.split(";");
+                    String id = row[0];
+                    returnArray.add(id);
+                }
             }
+        } catch (CsvValidationException e) {
+            e.printStackTrace();
         }
 
         return returnArray;
@@ -67,32 +65,27 @@ public class SignProvider {
 
         // get the filename of the drawable
         String drawableFileName;
+        drawableFileName = getDrawableFileName(Id);
+
+        Drawable drawable;
         try {
-            drawableFileName = getDrawableFileName(Id);
-
-            Drawable drawable;
-            try {
-                drawable = getXMLDrawable(drawableFileName);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                drawable = ContextCompat.getDrawable(context, R.drawable.not_found_sign);
-            }
-
-            if (drawableFileName.isEmpty()) {
-                drawable = ContextCompat.getDrawable(context, R.drawable.not_found_sign);
-            }
-
-            signDrawable = drawable;
-
-        } catch (CsvValidationException e) {
+            drawable = getXMLDrawable(drawableFileName);
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
+            drawable = ContextCompat.getDrawable(context, R.drawable.not_found_sign);
         }
+
+        if (drawableFileName.isEmpty()) {
+            drawable = ContextCompat.getDrawable(context, R.drawable.not_found_sign);
+        }
+
+        signDrawable = drawable;
 
         return signDrawable;
 
     }
 
-    private String getDrawableFileName(String id) throws IOException, CsvValidationException {
+    private String getDrawableFileName(String id) throws IOException {
         Log.i(TAG, "Sign: id=" + id);
 
         String alternativeId = getGardinerFromPhonetic(id);
@@ -127,13 +120,9 @@ public class SignProvider {
 
     public String getGardinerFromPhonetic(String phonetic) throws IOException {
         CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().open(FILENAME_DRAWABLE_IDS)));
-        try {
-            String gardiner = search(reader, phonetic, false);
-            if (!gardiner.isEmpty()) {
-                return gardiner;
-            }
-        } catch (CsvValidationException e){
-            e.printStackTrace();
+        String gardiner = search(reader, phonetic, false);
+        if (!gardiner.isEmpty()) {
+            return gardiner;
         }
         return phonetic;
     }
@@ -162,7 +151,7 @@ public class SignProvider {
     }
 
 
-    private static String search(CSVReader reader, String s, boolean fullPath) throws IOException, CsvValidationException {
+    private static String search(CSVReader reader, String s, boolean fullPath) throws IOException {
         try {
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
@@ -181,7 +170,7 @@ public class SignProvider {
                     }
                 }
             }
-        } catch (PatternSyntaxException e){
+        } catch (PatternSyntaxException | CsvValidationException e){
             e.printStackTrace();
         }
         return "";

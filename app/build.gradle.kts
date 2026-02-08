@@ -12,8 +12,8 @@ android {
         applicationId = "com.blueapps.signproviderexampleapp"
         minSdk = 24
         targetSdk = 36
-        versionCode = 100
-        versionName = "04.02.2026@1.0.0"
+        versionCode = 101
+        versionName = "08.02.2026@1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
