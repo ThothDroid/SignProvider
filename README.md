@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 Then add this dependency to your `build.gradle.kts` file:
 ```
 dependencies {
-  implementation("com.github.cristmasbox:SignProvider:1.0.1")
+  implementation("com.github.cristmasbox:SignProvider:1.0.2")
 }
 ```
 > [!NOTE]
@@ -47,5 +47,7 @@ This is the first release of the SignProvider library.
 ### 08.02.2026@1.0.1
 - Removed `CsvValidationException` from methods throwable list.
 - Removed Phonetic alternatives from `getAllSigns`. Now it only returns the Gardiner Codes.
+### 16.02.2026@1.0.2
+Removed Gardiner codes without drawable from `Drawable_Paths.csv`
 ### latest Version
-`08.02.2026@1.0.1`
+`16.02.2026@1.0.2`
