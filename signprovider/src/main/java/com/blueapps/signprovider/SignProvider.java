@@ -32,6 +32,7 @@ public class SignProvider {
     // Database Data
     public static final String FILENAME_DRAWABLE_IDS = "Databases/Drawable_Ids.csv";
     public static final String FILENAME_DRAWABLE_PATHS = "Databases/Drawable_Paths.csv";
+    public static final String PATH_PREFIX_BIN_IMAGES = "assets/Unicode/bin/";
 
 
     public SignProvider(Context context){
@@ -82,6 +83,25 @@ public class SignProvider {
         signDrawable = drawable;
 
         return signDrawable;
+
+    }
+
+    public String getSignPathData(String Id) throws IOException, XmlPullParserException {
+
+        String pathData = "";
+
+        // get the filename of the drawable
+        String drawableFileName;
+        drawableFileName = getDrawableFileName(Id);
+
+        // extract pathData
+
+
+        if (drawableFileName.isEmpty()) {
+            pathData = "Not Found";
+        }
+
+        return pathData;
 
     }
 
@@ -162,7 +182,7 @@ public class SignProvider {
                         if (row.length > 1) {
                             Log.i(TAG, "Sign: " + row[1]);
                             if (fullPath) {
-                                return "assets/Unicode/" + row[1];
+                                return PATH_PREFIX_BIN_IMAGES + row[1];
                             } else {
                                 return row[1];
                             }
