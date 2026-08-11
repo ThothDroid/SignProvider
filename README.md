@@ -49,5 +49,7 @@ This is the first release of the SignProvider library.
 - Removed Phonetic alternatives from `getAllSigns`. Now it only returns the Gardiner Codes.
 ### 16.02.2026@1.0.2
 Removed Gardiner codes without drawable from `Drawable_Paths.csv`
+### 11.08.2026@1.0.3
+Added `getSignPathData()` method to get the path data of a sign by its Gardiner code.
 ### latest Version
-`16.02.2026@1.0.2`
+`11.08.2026@1.0.3`
