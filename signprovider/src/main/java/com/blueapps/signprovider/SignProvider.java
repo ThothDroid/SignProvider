@@ -34,7 +34,7 @@ public class SignProvider {
     public static final String FILENAME_DRAWABLE_IDS = "Databases/Drawable_Ids.csv";
     public static final String FILENAME_DRAWABLE_PATHS = "Databases/Drawable_Paths.csv";
     public static final String PATH_PREFIX_BIN_IMAGES = "assets/Unicode/bin/";
-    public static final String PATH_PREFIX_PATH_DATA = "assets/Unicode/path/";
+    public static final String PATH_PREFIX_PATH_DATA = "Unicode/path/";
 
 
     public SignProvider(Context context){
