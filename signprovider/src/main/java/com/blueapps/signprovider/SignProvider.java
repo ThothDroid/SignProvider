@@ -13,8 +13,11 @@ import com.opencsv.exceptions.CsvValidationException;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,6 +34,7 @@ public class SignProvider {
     public static final String FILENAME_DRAWABLE_IDS = "Databases/Drawable_Ids.csv";
     public static final String FILENAME_DRAWABLE_PATHS = "Databases/Drawable_Paths.csv";
     public static final String PATH_PREFIX_BIN_IMAGES = "assets/Unicode/bin/";
+    public static final String PATH_PREFIX_PATH_DATA = "assets/Unicode/path/";
 
 
     public SignProvider(Context context){
@@ -86,20 +90,32 @@ public class SignProvider {
 
     public String getSignPathData(String Id) throws IOException, XmlPullParserException {
 
-        String pathData = "";
+        StringBuilder pathData = new StringBuilder();
 
         // get the filename of the drawable
         String drawableFileName;
         drawableFileName = getDrawableFileName(Id);
 
         // extract pathData
-
-
-        if (drawableFileName.isEmpty()) {
-            pathData = "Not Found";
+        // read path file from assets and return the content as a string
+        try {
+            InputStream is = context.getAssets().open(PATH_PREFIX_PATH_DATA + drawableFileName + ".txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            // read content line by line
+            String line = reader.readLine();
+            while (line != null) {
+                pathData.append(line);
+                line = reader.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, "File not found: " + PATH_PREFIX_PATH_DATA + drawableFileName + ".txt");
         }
 
-        return pathData;
+        if (drawableFileName.isEmpty()) {
+            pathData = new StringBuilder("Not Found");
+        }
+
+        return pathData.toString();
 
     }
 
