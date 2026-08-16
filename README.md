@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 Then add this dependency to your `build.gradle.kts` file:
 ```
 dependencies {
-  implementation("com.github.ThothDroid:SignProvider:1.0.2")
+  implementation("com.github.ThothDroid:SignProvider:1.1.0")
 }
 ```
 > [!NOTE]
@@ -54,4 +54,4 @@ Removed Gardiner codes without drawable from `Drawable_Paths.csv`
 ### 16.08.2026@1.1.0
 Added `getSignPathData()` method to get the path data of a sign by its Gardiner code or phonetics.
 ### latest Version
-`11.08.2026@1.1.0`
+`16.08.2026@1.1.0`
