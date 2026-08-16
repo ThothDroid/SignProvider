@@ -31,7 +31,7 @@ dependencies {
 > For the implementation for other build systems like `Groovy` see [here](https://jitpack.io/#ThothDroid/SignProvider/)
 
 ## Implementation with `.aar` file
-Download the `SignProvider_versionname.aar` file from this repository, create a `libs` folder in your project directory and paste the file there. Then add this dependency to your `build.gradle.kts` file:
+Download the [`SignProvider_versionname.aar`](https://github.com/ThothDroid/SignProvider/releases/latest) file from the latest release, create a `libs` folder in your project directory and paste the file there. Then add this dependency to your `build.gradle.kts` file:
 ```
 dependencies {
   implementation(files("../libs/SignProvider_versionname.aar"))
