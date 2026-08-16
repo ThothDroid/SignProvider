@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
             SignProvider signProvider = new SignProvider(this);
             try {
                 Toast.makeText(this, "Path: " + signProvider.getSignPathData(String.valueOf(binding.id.getText())), Toast.LENGTH_LONG).show();
-            } catch (IOException | XmlPullParserException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
