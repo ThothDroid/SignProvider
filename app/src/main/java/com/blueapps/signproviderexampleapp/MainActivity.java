@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.blueapps.signprovider.SignProvider;
+import com.blueapps.signprovider.SvgData;
 import com.blueapps.signproviderexampleapp.databinding.ActivityMainBinding;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         binding.buttonPath.setOnClickListener(v -> {
             SignProvider signProvider = new SignProvider(this);
             try {
-                Toast.makeText(this, "Path: " + signProvider.getSignPathData(String.valueOf(binding.id.getText())), Toast.LENGTH_LONG).show();
+                SvgData svgData = signProvider.getSvgData(String.valueOf(binding.id.getText()));
+                Toast.makeText(this, "Path: " + svgData.getPathData(), Toast.LENGTH_LONG).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -95,9 +95,11 @@ public class SignProvider {
      * @return The path data as a String. If the sign ID is not found, returns the data of Not Found Sign.
      * @throws IOException error reading the database files
      */
-    public String getSignPathData(String Id) throws IOException {
+    public SvgData getSvgData(String Id) throws IOException {
 
         StringBuilder pathData = new StringBuilder();
+        String width = "0";
+        String height = "0";
 
         // get the filename of the drawable
         String drawableFileName;
@@ -123,7 +125,7 @@ public class SignProvider {
             pathData = new StringBuilder(NOT_FOUND_DATA);
         }
 
-        return pathData.toString();
+        return new SvgData(pathData.toString(), width, height);
 
     }
 
