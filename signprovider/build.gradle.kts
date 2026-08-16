@@ -6,7 +6,7 @@ plugins {
 android {
     namespace = "com.blueapps.signprovider"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
@@ -57,7 +57,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.ThothDroid"
                 artifactId = "SignProvider"
-                version = "1.0.3"
+                version = "1.1.0"
             }
         }
     }
