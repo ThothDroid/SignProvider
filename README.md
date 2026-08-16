@@ -57,4 +57,4 @@ Added `getSignPathData()` method to get the path data of a sign by its Gardiner 
 - Changed the `getSignPathData()` method to return a `SvgData` object instead of a `String`. The `SvgData` object contains the path data, width, and height of the sign.
 - Renamed `getSignPathData()` to `getSvgData()`
 ### latest Version
-`16.08.2026@1.1.0`
+`16.08.2026@1.1.1`
