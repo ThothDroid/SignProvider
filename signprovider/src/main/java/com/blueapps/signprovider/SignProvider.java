@@ -88,7 +88,13 @@ public class SignProvider {
 
     }
 
-    public String getSignPathData(String Id) throws IOException, XmlPullParserException {
+    /**
+     * Retrieves the path data for a given sign ID.
+     * @param Id The sign ID for which to retrieve the path data. Phonetics allowed.
+     * @return The path data as a String. If the sign ID is not found, returns "Not Found".
+     * @throws IOException error reading the database files
+     */
+    public String getSignPathData(String Id) throws IOException {
 
         StringBuilder pathData = new StringBuilder();
 
