@@ -115,6 +115,7 @@ public class SignProvider {
             }
         } catch (FileNotFoundException e) {
             Log.e(TAG, "File not found: " + PATH_PREFIX_PATH_DATA + drawableFileName + ".txt");
+            pathData = new StringBuilder("Not Found");
         }
 
         if (drawableFileName.isEmpty()) {
