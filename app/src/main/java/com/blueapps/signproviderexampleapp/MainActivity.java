@@ -3,6 +3,7 @@ package com.blueapps.signproviderexampleapp;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,15 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         });
 
         binding.id.addTextChangedListener(this);
+
+        binding.buttonPath.setOnClickListener(v -> {
+            SignProvider signProvider = new SignProvider(this);
+            try {
+                Toast.makeText(this, "Path: " + signProvider.getSignPathData(String.valueOf(binding.id.getText())), Toast.LENGTH_LONG).show();
+            } catch (IOException | XmlPullParserException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 
