@@ -17,8 +17,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.regex.PatternSyntaxException;
 
@@ -66,7 +64,7 @@ public class SignProvider {
 
         // get the filename of the drawable
         String drawableFileName;
-        drawableFileName = getDrawableFileName(Id);
+        drawableFileName = getDrawableFilePath(Id);
 
         Drawable drawable;
         try {
@@ -106,6 +104,28 @@ public class SignProvider {
     }
 
     private String getDrawableFileName(String id) throws IOException {
+        Log.i(TAG, "Sign: id=" + id);
+
+        String alternativeId = getGardinerFromPhonetic(id);
+        String name;
+
+        CSVReader PathReader = new CSVReader(new InputStreamReader(context.getAssets().open(FILENAME_DRAWABLE_PATHS)));
+
+        if (alternativeId.isEmpty()){
+
+            name = search(PathReader, id, false);
+
+        } else {
+
+            name = search(PathReader, alternativeId, false);
+            Log.d(TAG, alternativeId);
+
+        }
+
+        return name;
+    }
+
+    private String getDrawableFilePath(String id) throws IOException {
         Log.i(TAG, "Sign: id=" + id);
 
         String alternativeId = getGardinerFromPhonetic(id);
