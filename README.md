@@ -42,6 +42,8 @@ dependencies {
 > If you renamed the `.aar` file you also have to change the name in the dependencies
 
 ## Version Catalog
+> [!IMPORTANT]
+> Since version `16.08.2026@1.1.0` the version catalog uses the new versioning system [see here](https://medium.com/@wassimsakri/the-ultimate-guide-to-versioning-in-software-development-e846eb292a0d).
 ### 04.02.2026@1.0.0
 This is the first release of the SignProvider library.
 ### 08.02.2026@1.0.1
@@ -49,9 +51,7 @@ This is the first release of the SignProvider library.
 - Removed Phonetic alternatives from `getAllSigns`. Now it only returns the Gardiner Codes.
 ### 16.02.2026@1.0.2
 Removed Gardiner codes without drawable from `Drawable_Paths.csv`
-/* Not finished yet, but the next version will be released soon.
-### 11.08.2026@1.0.3
-Added `getSignPathData()` method to get the path data of a sign by its Gardiner code.
-*/
+### 16.08.2026@1.1.0
+Added `getSignPathData()` method to get the path data of a sign by its Gardiner code or phonetics.
 ### latest Version
-`11.08.2026@1.0.2`
+`11.08.2026@1.1.0`
