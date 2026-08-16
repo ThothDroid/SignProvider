@@ -111,6 +111,8 @@ public class SignProvider {
             InputStream is = context.getAssets().open(PATH_PREFIX_PATH_DATA + drawableFileName + ".txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             // read content line by line
+            width = reader.readLine();
+            height = reader.readLine();
             String line = reader.readLine();
             while (line != null) {
                 pathData.append(line);
@@ -119,10 +121,14 @@ public class SignProvider {
         } catch (FileNotFoundException e) {
             Log.e(TAG, "File not found: " + PATH_PREFIX_PATH_DATA + drawableFileName + ".txt");
             pathData = new StringBuilder(NOT_FOUND_DATA);
+            width = "210";
+            height = "260";
         }
 
         if (drawableFileName.isEmpty()) {
             pathData = new StringBuilder(NOT_FOUND_DATA);
+            width = "210";
+            height = "260";
         }
 
         return new SvgData(pathData.toString(), width, height);
